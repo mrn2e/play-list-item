@@ -21,6 +21,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
+    this.currentIndex = 0;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -39,6 +40,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      currentIndex: { type: Number },
     };
   }
 
@@ -68,8 +70,44 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <div class="wrapper">
   <slot></slot>
-</div>`;
+</div>
+`;
   }
+firstUpdated() {
+    this.slides = this.querySelectorAll("slide-item");
+    this.arrows = this.querySelectorAll("slide-arrow");
+
+    this._updateSlides();
+
+    this.arrows.forEach((arrow) => {
+      arrow.addEventListener("click", (e) => {
+        this._handleArrow(arrow.direction);
+    });
+  });
+}
+
+_handleArrow(direction) {
+  if (direction === "next") {
+    this.currentIndex =
+      (this.currentIndex + 1) % this.slides.length;
+  } else {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.slides.length) %
+      this.slides.length;
+  }
+
+  this._updateSlides();
+}
+
+_updateSlides() {
+  this.slides.forEach((slide, index) => {
+    if (index === this.currentIndex) {
+      slide.style.display = "block";
+    } else {
+      slide.style.display = "none";
+    }
+  });
+}
 
   /**
    * haxProperties integration via file reference

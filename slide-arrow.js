@@ -56,12 +56,10 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
+      button {
         margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-      }
-      h3 span {
-        font-size: var(--slide-arrow-label-font-size, var(--ddd-font-size-s));
+        font-size: var(--slide-arrow-font-size, var(--ddd-font-size-s));
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
       }
     `];
   }
@@ -70,10 +68,10 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
   //im confew on how I will place these, can I insert them into a slotted elem in the play list item? or does it need to be in the index html? 
   render() {
     return html`
-<div class="wrapper">
-  <div class="right-arrow">${this.right}</div> 
-    <div class="left-arrow">${this.left}</div>
-</div>`;
+    <button>
+      ${this.direction === "next" ? this.right : this.left}
+    </button>
+`;
   }
 
   /**
