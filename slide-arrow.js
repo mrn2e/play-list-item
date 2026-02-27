@@ -27,13 +27,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
     this.t = {
       ...this.t,
       title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/slide-arrow.ar.json", import.meta.url).href +
-        "/../",
-    });
+    };;
   }
 
   // Lit reactive properties
@@ -73,14 +67,6 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
       ${this.direction === "next" ? this.right : this.left}
     </button>
 `;
-  }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
   }
 }
 

@@ -27,12 +27,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/slide-item.ar.json", import.meta.url).href +
-        "/../",
-    });
+    ;
   }
 
   // Lit reactive properties
@@ -75,13 +70,6 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
 </div>`;
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(SlideItem.tag, SlideItem);
