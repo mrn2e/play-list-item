@@ -1,49 +1,7 @@
 # play-list-item
-DDD + Lit web component based on OpenWC toolchain. This is intended to provide the following:
-- Look good via DDD, HAX design system
-- Simple, easy to read code via Lit
-- Great workflow via OpenWC tooling + Vercel for sharing demos
-- Simplify contribution to the HAX ecosystem
-- Publish and distribute via npmjs.com
+IST 256 week 7 Homework
 
-## Install dependencies
-- `npm install` - installs dependencies so you can work
+Project working on creating a playlist web component 
 
-## Commands
-- `npm start` - runs your web component for development, reloading on file changes
-- `npm run build` - builds your web component and outputs it in your `dist` directory for placement on web servers in a compiled form. Vercel automatically does this on commit to github.
-- `npm run release` - this will build your code, update the version, and publish it to npm for others to use
-
-## Working with your web component
-- edit `./play-list-item.js`
-- edit your 'demo' by modifying `./index.html`
-- add dependencies using `npm install --save @whatever/repo` or editing `./package.json` directly
-- if you must reference additional non-JS files, ensure you use the `new URL('./my-file.jpg', import.meta.url).href` syntax so that it builds correctly
-- if you add additional `.js` files / web components then place them under `/lib/`
-- to improve HAX wiring edit file in `/lib/play-list-item.haxProperties.json`
-- for i18n / internationalization efforts, see associated language `.json` files in `/locales/` as well as `/lib/` for haxProperties related translation examples.
-
-## Recommended setup
-- Load VS code in 1 window to project root
-- Browser open
-- Right click -> Inspect and open the Console to see error output
-
-## Recommended Integrated Development Environment (IDE)
-- [VSCode](https://code.visualstudio.com/Download)
-
-### Plugins
-
-Name: lit-html
-Description: Syntax highlighting and IntelliSense for html inside of JavaScript and TypeScript tagged template strings
-Publisher: Matt Bierner
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=bierner.lit-html
-
-Name: lit-plugin
-Description: Syntax highlighting, type checking and code completion for lit-html
-Publisher: Rune Mehlsen
-VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin
-
-# Credits
-A brighter future dreamed and developed by the Penn State [HAXTheWeb](https://hax.psu.edu/) initative.
-
-Never. Stop. innovating.
+Sample image provided in the outline below:
+![example of a working playlist](https://private-user-images.githubusercontent.com/329735/303106815-7e5969e7-44a0-4f83-8c0f-5b8c34c243d9.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIwNzAwODUsIm5iZiI6MTc3MjA2OTc4NSwicGF0aCI6Ii8zMjk3MzUvMzAzMTA2ODE1LTdlNTk2OWU3LTQ0YTAtNGY4My04YzBmLTViOGMzNGMyNDNkOS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNlQwMTM2MjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YjdiMWUxMGY0MDcyZmI2ZTFkOGM1ZjU1NWZhNTFlYjYzNzhjNTkyYzdjODE2OTYxZjI5ZWE0MTI5YTcyMDQzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.u18FiRt38Lgz0mAEKfbzgeVdW8-szFFfH07BuQ578cM)
