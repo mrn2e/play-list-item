@@ -37,6 +37,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   // Lit reactive properties
+  //tasks: direction, dispatch event
   static get properties() {
     return {
       ...super.properties,

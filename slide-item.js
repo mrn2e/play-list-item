@@ -21,6 +21,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
+    this.desc = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -39,6 +40,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      desc: { type: String },
     };
   }
 
@@ -55,18 +57,20 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+        width: 300px;
+        height: 100px;
       }
-      h3 span {
-        font-size: var(--slide-list-item-label-font-size, var(--ddd-font-size-s));
-      }
+    
     `];
   }
 
   // Lit render the HTML
+  //tasks: know index, show/hide based on idex (class? for active)
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <h3>${this.title}</h3>
+  <h3 class="desc">${this.desc}</h3>
   <slot></slot>
 </div>`;
   }

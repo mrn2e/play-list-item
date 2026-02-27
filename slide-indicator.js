@@ -56,18 +56,15 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-      h3 span {
-        font-size: var(--slide-indicator-label-font-size, var(--ddd-font-size-s));
-      }
     `];
   }
 
   // Lit render the HTML
+  //tasks: have index, dispatch event on click
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-  <slot></slot>
+  
 </div>`;
   }
 

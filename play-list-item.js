@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { state } from "lit/decorators.js";
 
 /**
  * `play-list-item`
@@ -40,7 +41,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      currentIndex: { type: Number },
+      currentIndex: { type: Number, state: true },
     };
   }
 
@@ -57,6 +58,12 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
       }
       
     `];
@@ -65,7 +72,9 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   //no text in this element, just create a flexbox that has default styles and classes for each of the components inside
   // the slot will be used to place the content of the play-list-item, which can be a slide-item, slide-arrow, or slide-indicator???
-  //also work on flex @ media display for this element for phones n such 
+  //also work on flex @ media display for this element for phones n such
+  //tasks: Track current slide, Handle next/prev, Listen for events from arrows + indicators, Control which slide is visible 
+
   render() {
     return html`
 <div class="wrapper">
@@ -73,6 +82,8 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
 </div>
 `;
   }
+
+ /* 
 firstUpdated() {
     this.slides = this.querySelectorAll("slide-item");
     this.arrows = this.querySelectorAll("slide-arrow");
@@ -108,6 +119,8 @@ _updateSlides() {
     }
   });
 }
+
+*/
 
   /**
    * haxProperties integration via file reference
