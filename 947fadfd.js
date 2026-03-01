@@ -1,0 +1,4 @@
+import{D as d,i as c,b as o,I as l,a as p}from"./e65b92ef.js";var e=Object.freeze,g=Object.defineProperty,r=(t,s)=>e(g(t,"raw",{value:e(s||t.slice())}));/**
+* Copyright 2026 Mayita
+* @license Apache-2.0, see LICENSE for full text.
+*/var i,a;class n extends d(l(p)){static get tag(){return"slide-indicator"}constructor(){super(),this.title="",this.t=this.t||{},this.t={...this.t,title:"Title"}}static get properties(){return{...super.properties,title:{type:String}}}static get styles(){return[super.styles,c(i||(i=r(["\n      :host {\n        display: block;\n        color: var(--ddd-theme-primary);\n        background-color: var(--ddd-theme-accent);\n        font-family: var(--ddd-font-navigation);\n      }\n      .wrapper {\n        margin: var(--ddd-spacing-2);\n        padding: var(--ddd-spacing-4);\n      }\n    "])))]}render(){return o(a||(a=r(['\n<div class="wrapper">\n  \n</div>'])))}}globalThis.customElements.define(n.tag,n);
