@@ -36,6 +36,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       desc: { type: String },
+      active: { type: Boolean, reflect: true },
     };
   }
 
@@ -44,18 +45,16 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
       :host {
+        display: none;
+      }
+      :host([active]) {
         display: block;
+        border-width: 5px;
+      }
+      h3{
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-        width: 300px;
-        height: 100px;
-      }
-    
+      
     `];
   }
 
@@ -65,6 +64,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <div class="wrapper">
   <h3>${this.title}</h3>
+  <h1>------</h1>
   <h3 class="desc">${this.desc}</h3>
   <slot></slot>
 </div>`;

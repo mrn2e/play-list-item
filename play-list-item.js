@@ -36,7 +36,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      currentIndex: { type: Number, state: true },
+      currentIndex: { type: Number },
     };
   }
 
@@ -59,6 +59,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        background-color: var(--ddd-theme-default-alertNonEmergency);
       }
       
     `];
@@ -78,21 +79,31 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
 `;
   }
 
- /* 
 firstUpdated() {
-    this.slides = this.querySelectorAll("slide-item");
-    this.arrows = this.querySelectorAll("slide-arrow");
+  const slot = this.shadowRoot.querySelector("slot");
+  const elements = slot.assignedElements({ flatten: true });
 
-    this._updateSlides();
+  this.slides = elements.filter(
+    (el) => el.tagName === "SLIDE-ITEM"
+  );
 
-    this.arrows.forEach((arrow) => {
-      arrow.addEventListener("click", (e) => {
-        this._handleArrow(arrow.direction);
+  this.arrows = elements.filter(
+    (el) => el.tagName === "SLIDE-ARROW"
+  );
+
+  this._updateSlides();
+
+  this.arrows.forEach((arrow) => {
+    arrow.addEventListener("click", () => {
+      this._handleArrow(arrow.direction);
     });
   });
+  
 }
 
 _handleArrow(direction) {
+  if (!this.slides.length) return;
+
   if (direction === "next") {
     this.currentIndex =
       (this.currentIndex + 1) % this.slides.length;
@@ -107,15 +118,9 @@ _handleArrow(direction) {
 
 _updateSlides() {
   this.slides.forEach((slide, index) => {
-    if (index === this.currentIndex) {
-      slide.style.display = "block";
-    } else {
-      slide.style.display = "none";
-    }
+    slide.toggleAttribute("active", index === this.currentIndex);
   });
 }
-
-*/
 
 }
 

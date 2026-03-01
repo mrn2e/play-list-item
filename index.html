@@ -36,24 +36,31 @@
 <body>
   <div id="demo">
     <h1>Playlist Component</h1>
-    <!-- this is going to do whatever the tag's defaults are -->
-    <h2>Default</h2>
-
     <!-- AT LEAST I THINK this is how it'll look -->
     <play-list-item>
-      <slide-arrow direction="prev" left="-"></slide-arrow> 
-      <slide-item index="1"
-      title="test"
-      desc="testinggggg"
-      ></slide-item>
+      <slide-arrow direction="prev"></slide-arrow> 
 
-      <slide-item index="2"></slide-item>
-      <slide-arrow direction="next" right="->"></slide-arrow>
-      <slide-indicator></slide-indicator>
+      <slide-item
+      desc="This is the first slide"
+      title="test"
+      >Slide one</slide-item>
+      <slide-item>Slide two</slide-item>
+      <slide-item>Slide three</slide-item>
+      <slide-item
+      desc="testinggggg"
+      title="slide four"
+      >copy this styling to the regular desc css</slide-item>
+
+      <slide-arrow direction="next"></slide-arrow>
+      
     </play-list-item>
+    
     
   </div>
   <script type="module" src="./play-list-item.js"></script>  
+  <script type="module" src="./slide-item.js"></script>
+  <script type="module" src="./slide-arrow.js"></script>
+  <script type="module" src="./slide-indicator.js"></script>
 </body>
 
 </html>

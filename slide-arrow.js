@@ -20,9 +20,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "";
-    this.right = " > ";
-    this.left = " < ";
+    
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -35,9 +33,8 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
-      right: { type: String },
-      left: { type: String },
+      direction: { type: String },
+      right: { type: String, reflect: true },
     };
   }
 
@@ -47,14 +44,22 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
       }
-      button {
+      button { //I just styled the html tag since I never made a class for each button, just their container
+        display: block;
+        background-color: var(--ddd-theme-default-link80);
+        color: var(--ddd-theme-default-infoLight);
+        width: 50px;
+        height: 50px;
+        font-size: var(--counter-app-button-font-size, var(--ddd-font-size-s));
         margin: var(--ddd-spacing-2);
-        font-size: var(--slide-arrow-font-size, var(--ddd-font-size-s));
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        border-radius: var(--ddd-radius-md);
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      button:hover{
+        background-color: var(--ddd-theme-default-info);
+        color: var(--ddd-theme-default-infoLight);
+        transform: scale(1.1);
       }
     `];
   }
@@ -64,7 +69,7 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <button>
-      ${this.direction === "next" ? this.right : this.left}
+      ${this.direction === "next" ? ">" : "<"}
     </button>
 `;
   }
