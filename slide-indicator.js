@@ -20,20 +20,16 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    ;
+    this.total = 0;
+    this.currentIndex = 0;
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
+      total: { type: Number },
+      currentIndex: { type: Number },
     };
   }
 
@@ -47,9 +43,22 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
+      .all {
+        display: flex;
+        justify-content: center;
+        gap: var(--ddd-spacing-2);
+        padding: var(--ddd-spacing-2);
+      }
+      .current {
+       width: 12px;
+       height: 12px;
+       border-radius: 50%;
+       background-color: var(--ddd-theme-default-beaverBlue);
+       opacity: 0.4;
+       cursor: pointer;
+      }
+      .current.active {
+      opacity: 1;
       }
     `];
   }
@@ -57,10 +66,27 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   //tasks: have index, dispatch event on click
   render() {
+    let all = [];
+    for (let i = 0; i < this.total; i++) {
+      all.push(html`
+      <span @click="${this._handleClick}" data-index="${i}" class="current ${i === this.currentIndex ? 'active' : ''}"></span>
+        `);
+    }
     return html`
-<div class="wrapper">
-  
-</div>`;
+      <div class="all">
+        ${all}
+      </div>`;
+  }
+
+  _handleClick(e) {
+    const indexCHange = new CustomEvent("play-list-index-change", {
+      composed: true,
+      bubbles: true,
+      detail: {
+        index: parseInt(e.target.dataset.index)
+      }
+    })
+    this.dispatchEvent(indexCHange);
   }
 
 }

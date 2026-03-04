@@ -56,7 +56,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         background-color: var(--ddd-theme-default-alertNonEmergency);
@@ -65,7 +65,6 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
-  // Lit render the HTML
   //no text in this element, just create a flexbox that has default styles and classes for each of the components inside
   // the slot will be used to place the content of the play-list-item, which can be a slide-item, slide-arrow, or slide-indicator???
   //also work on flex @ media display for this element for phones n such
@@ -74,10 +73,40 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
+  <slide-arrow
+    @prev-clicked="${this.prev}">
+  </slide-arrow>
   <slot></slot>
+  <slide-arrow
+  @next-clicked="${this.next}"><</slide-arrow>
+  <slide-indicator
+  @play-list-index-changed="${this.handleEvent}"
+    .total="${this.slides ? this.slides.length : 0}"
+    .currentIndex="${this.currentIndex}">
+  </slide-indicator>
 </div>
+
+  <script type="module" src="./slide-arrow.js"></script>
+  <script type="module" src="./slide-indicator.js"></script>
 `;
   }
+
+  handleEvent(e) {
+      this.currentIndex = e.detail.index;
+    this._updateSlides();
+  }
+  next() {
+  if (this.currentIndex < this.slides.length - 1) {
+    this.currentIndex++;
+    this._updateSlides();
+  }
+}
+prev() {
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+    this._updateSlides();
+  }
+}
 
 firstUpdated() {
   const slot = this.shadowRoot.querySelector("slot");

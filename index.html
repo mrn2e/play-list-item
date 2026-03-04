@@ -36,26 +36,19 @@
 <body>
   <div id="demo">
     <h1>Playlist Component</h1>
-    <!-- AT LEAST I THINK this is how it'll look -->
-    <play-list-item>
-      <slide-arrow direction="prev"></slide-arrow> 
-
-      <slide-item
-      desc="This is the first slide"
-      title="test"
-      >Slide one</slide-item>
-      <slide-item>Slide two</slide-item>
-      <slide-item>Slide three</slide-item>
-      <slide-item
-      desc="testinggggg"
-      title="slide four"
-      >copy this styling to the regular desc css</slide-item>
-
-      <slide-arrow direction="next"></slide-arrow>
-      
-    </play-list-item>
-    
-    
+<!-- how it SHOULD look -->
+    <play-list-item index="3">
+    <slide-item title="Top line heading" desc="Slide 1, sub-heading">
+      <p>First slide</p>
+    </slide-item>
+    <slide-item title="Top line heading" desc="Slide 1, sub-heading">
+      <p>Second slide</p>
+    </slide-item>
+    <slide-item title="Top line heading" desc="Slide 1, sub-heading">
+      <p>THE THIRD SLIDE!!!!</p>
+    </slide-item>
+</play-list-item>
+ 
   </div>
   <script type="module" src="./play-list-item.js"></script>  
   <script type="module" src="./slide-item.js"></script>
