@@ -68,8 +68,16 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
   //im confew on how I will place these, can I insert them into a slotted elem in the play list item? or does it need to be in the index html? 
   render() {
     return html`
-    <button class="prev" @click=${() => this.dispatchEvent(new CustomEvent('prev-clicked', {bubbles: true, composed: true }))}><</button>
-    <button class="next" @click=${() => this.dispatchEvent(new CustomEvent('next-clicked', {bubbles: true, composed: true}))}>></button>
+    <button
+      @click=${() => this.dispatchEvent(
+        new CustomEvent(
+          this.direction === "next" ? "next-clicked" : "prev-clicked",
+          { bubbles: true, composed: true }
+        )
+      )}
+    >
+      ${this.direction === "next" ? ">" : "<"}
+    </button>
 `;
   }
 }

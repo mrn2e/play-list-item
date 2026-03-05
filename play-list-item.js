@@ -5,8 +5,9 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { state } from "lit/decorators.js";
-
+import "./slide-arrow.js";
+import "./slide-item.js";
+import "./slide-indicator.js";
 /**
  * `play-list-item`
  * 
@@ -57,9 +58,12 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
         height: 100%;
         display: flex;
         flex-direction: column;
+        background-color: var(--ddd-theme-default-alertNonEmergency);
+      }
+      .arrow {
+        display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: var(--ddd-theme-default-alertNonEmergency);
       }
       
     `];
@@ -73,21 +77,32 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
+
+<div class="arrow">
   <slide-arrow
-    @prev-clicked="${this.prev}">
+  direction='prev'
+  @prev-clicked="${this.prev}">
+
   </slide-arrow>
+
+
+  <div class="slides">
   <slot></slot>
+  </div>
+
+  
   <slide-arrow
-  @next-clicked="${this.next}"><</slide-arrow>
+  direction='next'
+  @next-clicked="${this.next}">
+  </slide-arrow>
+  </div>
+
   <slide-indicator
   @play-list-index-changed="${this.handleEvent}"
-    .total="${this.slides ? this.slides.length : 0}"
-    .currentIndex="${this.currentIndex}">
+  .total="${this.slides ? this.slides.length : 0}"
+  .currentIndex="${this.currentIndex}">
   </slide-indicator>
 </div>
-
-  <script type="module" src="./slide-arrow.js"></script>
-  <script type="module" src="./slide-indicator.js"></script>
 `;
   }
 
@@ -120,13 +135,14 @@ firstUpdated() {
     (el) => el.tagName === "SLIDE-ARROW"
   );
 
-  this._updateSlides();
-
   this.arrows.forEach((arrow) => {
     arrow.addEventListener("click", () => {
       this._handleArrow(arrow.direction);
     });
   });
+
+  this._updateSlides();
+  this.requestUpdate();
   
 }
 
