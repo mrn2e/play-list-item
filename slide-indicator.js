@@ -79,7 +79,7 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _handleClick(e) {
-    const indexCHange = new CustomEvent("play-list-index-change", {
+    const indexCHange = new CustomEvent("play-list-index-changed", {
       composed: true,
       bubbles: true,
       detail: {
