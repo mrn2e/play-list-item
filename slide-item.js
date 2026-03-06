@@ -53,6 +53,7 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
         display: block;
         border-width: var(--ddd-border-size-lg);
         min-height: 200px;
+        padding-right: 100px;
       }
       h3 {
         color: var(--ddd-theme-default-beaverBlue);

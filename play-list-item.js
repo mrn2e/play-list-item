@@ -52,6 +52,7 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
         font-family: var(--ddd-font-navigation);
         box-shadow: var(--ddd-shadow-elevation-2);
         border-radius: var(--ddd-radius-lg);
+        max-width: 800px;
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
