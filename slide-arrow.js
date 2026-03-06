@@ -47,14 +47,16 @@ export class SlideArrow extends DDDSuper(I18NMixin(LitElement)) {
       }
       button { 
         display: block;
-        background-color: var(--ddd-theme-default-link80);
-        color: var(--ddd-theme-default-infoLight);
-        width: 50px;
-        height: 50px;
+        background-color: var(--ddd-theme-default-disabled);
+        color: var(--ddd-theme-default-beaverBlue);
+        width: 40px;
+        height: 40px;
         font-size: var(--counter-app-button-font-size, var(--ddd-font-size-s));
         margin: var(--ddd-spacing-2);
-        border-radius: var(--ddd-radius-md);
+        border-radius: var(--ddd-radius-circle);
+        border-color: var(--ddd-theme-default-beaverBlue);
         transition: background-color 0.3s, transform 0.3s;
+        
       }
       button:hover{
         background-color: var(--ddd-theme-default-info);

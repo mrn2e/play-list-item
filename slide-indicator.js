@@ -46,8 +46,8 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
       .all {
         display: flex;
         justify-content: center;
-        gap: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-2);
+        gap: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4);
       }
       .current {
        width: 12px;

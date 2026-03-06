@@ -52,15 +52,28 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
       :host([active]) {
         display: block;
         border-width: var(--ddd-border-size-lg);
+        min-height: 200px;
       }
-      h3{
-        color: var(--ddd-theme-primary);
+      h3 {
+        color: var(--ddd-theme-default-beaverBlue);
+        font-size: var(--ddd-font-size-xxl);
+        padding: 0px;
+        margin: 0px;
       }
       .top-heading {
-        color: var(--ddd-theme-primary);
-        font-size: var(--ddd-font-size-s);
+        color: var(--ddd-theme-default-link);
+        font-size: 18px;
+        font-weight: var(--ddd-font-weight-bold);
         text-transform: uppercase;
-        margin-bottom: var(--ddd-spacing-1);
+        margin: 0;
+        margin-top: 30px;
+        padding: 3px;
+      }
+      .line {
+        border-top: 1px solid var(--ddd-theme-primary); 
+        font-size: 10px;
+        margin-top: 30px;
+        color: var(--ddd-theme-default-pughBlue);
       }
       
     `];
@@ -71,9 +84,9 @@ export class SlideItem extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <p class="top-heading">${this.t.topHeading}</p>
+  <p class="top-heading">${this.topHeading}</p>
   <h3>${this.title}</h3>
-  <h1>------</h1>
+  <div class="line">────────</div>
   <h3 class="desc">${this.desc}</h3>
   <slot></slot>
 </div>`;

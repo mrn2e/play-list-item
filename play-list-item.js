@@ -48,13 +48,15 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
+        background-color: var(--ddd-theme-default-alertNonEmergency);
         font-family: var(--ddd-font-navigation);
+        box-shadow: var(--ddd-shadow-elevation-2);
+        border-radius: var(--ddd-radius-lg);
       }
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
-        width: 100%;
+        width: 93%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -64,6 +66,13 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-left: -50px;
+        margin-right: -50px;
+      }
+      .indicator {
+        display: flex;
+        justify-content: left;
+        margin-top: var(--ddd-spacing-2);
       }
       
     `];
@@ -97,17 +106,19 @@ export class PlayListItem extends DDDSuper(I18NMixin(LitElement)) {
   </slide-arrow>
   </div>
 
+  <div class="indicator">
   <slide-indicator
   @play-list-index-changed="${this.handleEvent}"
   .total="${this.slides ? this.slides.length : 0}"
   .currentIndex="${this.currentIndex}">
   </slide-indicator>
 </div>
+</div>
 `;
   }
 
   handleEvent(e) {
-      this.currentIndex = e.detail.index;
+    this.currentIndex = e.detail.index;
     this._updateSlides();
   }
   next() {
